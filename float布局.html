@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        .clearfix::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        div {
+            float: left;
+            border: 1px solid red;
+            width: 200;
+            height: 100px;
+        }
+
+        nav {
+            float: left;
+            border: 1px solid blue;
+            width: 200px;
+            height: 200px;
+        }
+        header{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="clearfix">
+        <div>
+            1234
+        </div>
+        <nav>
+            daohang
+        </nav>
+    </header>
+</body>
+
+</html>
