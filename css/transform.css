@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#demo {
+  width: 100px;
+  height: 100px;
+  border: 1px solid red;
+    transition: all 1s;
+
+}
+#demo:hover{
+    transform: rotate(45deg);
+}
