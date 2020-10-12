@@ -5,23 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>画图</title>
-    <link rel="stylesheet" href="/style.e308ff8e.css">
-<script src="/style.e308ff8e.js"></script></head>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
 
 <body>
-    <div id="canvan">
-    </div>
-    <script>canvan.addEventListener('mousedown', fn());
+    <canvas id="canvas" width="300" height="227" style="float:left"></canvas>
 
-function fn() {
-  canvan.onmousemove = function (e) {
-    var div = document.createElement('div');
-    div.className = 'write';
-    canvan.appendChild(div);
-    div.style.left = e.pageX + 'px';
-    div.style.top = e.pageY + 'px';
-  };
-}</script>
+    <script>var canvas = document.getElementById('canvas');
+canvas.width = document.documentElement.clientWidth;
+canvas.height = document.documentElement.clientHeight;
+var ctx = canvas.getContext("2d");
+var pating = false;
+ctx.fillStyle = "black";
+ctx.strokeStyle = "none";
+
+canvas.onmousedown = function () {
+  pating = true;
+};
+
+canvas.onmousemove = function (e) {
+  if (pating === true) {
+    ctx.beginPath();
+    ctx.arc(e.clientX - 5, e.clientY - 5, 5, 0, 2 * Math.PI);
+    ctx.stroke();
+    ctx.fill();
+  }
+};
+
+canvas.onmouseup = function () {
+  pating = false;
+};</script>
 </body>
 
 </html>

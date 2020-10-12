@@ -4,18 +4,6 @@
     box-sizing: border-box;
 
 }
-#canvan{
-    height: 100vh;
+#canvas{
     border: 1px solid red;
-
-}
-.write {
-    border: 1px solid red;
-    background: red;
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: 50%;
 }
