@@ -37,7 +37,10 @@
             canvas.onmousemove = (e) => {
                 if (pating === true) {
                     ctx.beginPath();
-                    ctx.arc(e.clientX - 5, e.clientY - 5, 5, 0, 2 * Math.PI);
+                    ctx.arc(e.clientX - 5, e.clientY - 5, 10, 0, 2 * Math.PI);
+                    
+                    ctx.moveTo(e.clientX-10, e.clientY-10);
+                    ctx.lineTo(e.clientX, e.clientY);
                     ctx.stroke();
                     ctx.fill();
                 }
