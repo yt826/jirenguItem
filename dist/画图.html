@@ -18,23 +18,35 @@ var ctx = canvas.getContext("2d");
 var pating = false;
 ctx.fillStyle = "black";
 ctx.strokeStyle = "none";
+var isTouchDevice = ("ontouchstart" in document.documentElement);
 
-canvas.onmousedown = function () {
-  pating = true;
-};
-
-canvas.onmousemove = function (e) {
-  if (pating === true) {
+if (isTouchDevice) {
+  canvas.ontouchmove = function (e) {
+    var x = e.touches[0].clientX;
+    var y = e.touches[0].clientY;
     ctx.beginPath();
-    ctx.arc(e.clientX - 5, e.clientY - 5, 5, 0, 2 * Math.PI);
+    ctx.arc(x, y, 10, 0, 2 * Math.PI);
     ctx.stroke();
     ctx.fill();
-  }
-};
+  };
+} else {
+  canvas.onmousedown = function () {
+    pating = true;
+  };
 
-canvas.onmouseup = function () {
-  pating = false;
-};</script>
+  canvas.onmousemove = function (e) {
+    if (pating === true) {
+      ctx.beginPath();
+      ctx.arc(e.clientX - 5, e.clientY - 5, 5, 0, 2 * Math.PI);
+      ctx.stroke();
+      ctx.fill();
+    }
+  };
+
+  canvas.onmouseup = function () {
+    pating = false;
+  };
+}</script>
 </body>
 
 </html>

@@ -19,23 +19,34 @@
         let pating = false;
         ctx.fillStyle = "black"
         ctx.strokeStyle = "none";
-        canvas.onmousedown = () =>{
-          pating = true;
-        }
-       
-       
-           canvas.onmousemove = (e) => {
-               if (pating === true){
-              ctx.beginPath();
-                   ctx.arc(e.clientX - 5, e.clientY - 5, 5, 0, 2 * Math.PI);
-                   ctx.stroke();
-                   ctx.fill();
-               }
-               
+        let isTouchDevice = "ontouchstart" in document.documentElement;
+        if(isTouchDevice){
+            canvas.ontouchmove = (e) =>{
+                let x = e.touches[0].clientX;
+                let y = e.touches[0].clientY;
+                ctx.beginPath();
+                ctx.arc(x,y, 10,0, 2 * Math.PI);
+                ctx.stroke();
+                ctx.fill();
             }
-            canvas.onmouseup = () =>{
+        }
+       else{
+            canvas.onmousedown = () => {
+                pating = true;
+            }
+            canvas.onmousemove = (e) => {
+                if (pating === true) {
+                    ctx.beginPath();
+                    ctx.arc(e.clientX - 5, e.clientY - 5, 5, 0, 2 * Math.PI);
+                    ctx.stroke();
+                    ctx.fill();
+                }
+
+            }
+            canvas.onmouseup = () => {
                 pating = false;
             }
+       }
     </script>
 </body>
 
